@@ -1,0 +1,24 @@
+{% extends "layouts/layout.html" %}
+{% block title %}
+    List Post | {{ block.super }}
+{% endblock title %}
+{% block content %}
+  <h4><small>List Posts</small></h4>
+  <hr>
+  {% if posts %}
+    {% for post in posts %}
+    <div>
+        <div data-toggle="collapse" data-target="#{{post.id}}">
+            <h2>{{post.name}}</h2>
+            <h5><span class="glyphicon glyphicon-time"></span> Post at {{post.timestamp}}</h5>
+        </div>
+        <div id="{{post.id}}" class="collapse">
+            <p>{{post.content}}</p>
+        </div> 
+    </div>
+    <br><br>
+    {% endfor %}
+  {% else %}
+    No song.
+  {% endif %}
+{% endblock content %}
