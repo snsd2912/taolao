@@ -11,10 +11,23 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# print(BASE_DIR)
+
+env.read_env(os.path.join(BASE_DIR, '.env'))
+
+DB_NAME=env("DB_NAME")
+DB_USER=env("DB_USER")
+DB_PASSWORD=env("DB_PASSWORD")
+DB_HOST=env("DB_HOST")
+DB_PORT=env("DB_PORT")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -85,11 +98,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'blog',
-        'USER': 'root',
-        'PASSWORD': 'SAng19$$$',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
