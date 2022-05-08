@@ -7,6 +7,7 @@ def loginDockerHub(){
 node {
     stage('Check out'){
         checkout scm
+        sh "env | sort"
     }
 
     stage('Build'){
