@@ -19,4 +19,6 @@ node {
         sh "docker tag django:dev wing0805/taolao:dev"
         sh "docker push wing0805/taolao:dev"
     }
+
+    
 }
